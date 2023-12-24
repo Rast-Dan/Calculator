@@ -6,6 +6,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
 import java.util.Random;
 
 class CalculatorUITest {
@@ -236,10 +237,8 @@ class CalculatorUITest {
         checkEqual(calculator, Math.sqrt(a));
     }
 
-    @Test
-    void random() {
-        var calculator = getCalculatorUI();
-        for(int i = 0; i < 1000; i++) {
+    void random(CalculatorUI calculator, int iterations) {
+        for(int i = 0; i < iterations; i++) {
             var action = getRand(24).intValue();
             switch (action) {
                 case 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 -> clickDigit(calculator, action);
@@ -259,8 +258,19 @@ class CalculatorUITest {
                 case 22 -> calculator.btnPower.doClick();
                 case 23 -> calculator.btnLog.doClick();
             }
-
         }
+    }
+
+    @Test
+    void fuzzing() {
+        var calculator = getCalculatorUI();
+        random(calculator, 1000);
+    }
+
+    @Test
+    void timings() {
+        var calculator = getCalculatorUI();
+        assertTimeout(Duration.ofSeconds(1), ()->random(calculator, 10));
     }
 
 }
