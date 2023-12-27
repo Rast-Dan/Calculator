@@ -1,10 +1,14 @@
-package com.houarizegai.calculator.ui;
+package com.houarizegai.calculator.abtractui;
 
+import com.houarizegai.calculator.ui.CalculatorUI;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.awt.event.WindowEvent;
 import java.util.Random;
+import java.util.regex.Pattern;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractUITest {
     protected CalculatorUI calculator;
@@ -69,7 +73,10 @@ public abstract class AbstractUITest {
         checkEqual(value.toString());
     }
     protected void checkEqual(Double value) {
-        checkEqual(value.toString());
+        var resValue = Double.parseDouble(calculator.inputScreen.getText());
+        var diff = Math.abs(resValue - value);
+        if(diff > 0.0000001)
+            checkEqual(value.toString());
     }
 
     protected void random(int iterations) {

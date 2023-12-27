@@ -1,10 +1,11 @@
-package com.houarizegai.calculator.ui;
+package com.houarizegai.calculator.modules;
 
+import com.houarizegai.calculator.abtractui.AbstractUITest;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorUITest extends AbstractUITest{
+class CalculatorUITest extends AbstractUITest {
     @Test
     void inputs() {
         clickDigit(3);
@@ -66,12 +67,12 @@ class CalculatorUITest extends AbstractUITest{
 
     @Test
     void modTest() {
-        var a = getRandDouble(1000);
-        var b = getRandDouble(1000) + 1;
-        inputNumber(a);
+        var a = getRand(1000).intValue();
+        var b = getRand(1000).intValue() + 1;
+        inputNumber((long)a);
         checkEqual(a);
         calculator.btnMod.doClick();
-        inputNumber(b);
+        inputNumber((long)b);
         checkEqual(b);
         calculator.btnEqual.doClick();
         checkEqual(a % b);

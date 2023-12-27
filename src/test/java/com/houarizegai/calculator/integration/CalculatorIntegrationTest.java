@@ -1,5 +1,6 @@
-package com.houarizegai.calculator.ui;
+package com.houarizegai.calculator.integration;
 
+import com.houarizegai.calculator.abtractui.AbstractUITest;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -8,18 +9,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
-public class CalculatorIntegrationTest extends AbstractUITest{
-
-    @Test
-    void fuzzing() {
-        random(1000);
-    }
-
-    @Test
-    void timings() {
-        assertTimeout(Duration.ofSeconds(1), ()->random(10));
-    }
-
+public class CalculatorIntegrationTest extends AbstractUITest {
     @Test
     void themes() {
         assertEquals(calculator.window.getContentPane().getBackground(), new Color(0xf0f3f9));

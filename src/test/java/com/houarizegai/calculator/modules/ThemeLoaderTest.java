@@ -1,5 +1,6 @@
-package com.houarizegai.calculator.theme;
+package com.houarizegai.calculator.modules;
 
+import com.houarizegai.calculator.theme.ThemeLoader;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
