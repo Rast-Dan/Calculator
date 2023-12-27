@@ -1,0 +1,9 @@
+themes:
+  - name: Test
+    applicationBackground: 000000
+    textColor: 111111
+    operatorBackground: 222222
+    numbersBackground: 333333
+    btnEqualTextColor: 444444
+    btnEqualBackground: 555555
+  - name: TestDefaults

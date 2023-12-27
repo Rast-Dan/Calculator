@@ -16,14 +16,18 @@ public class ThemeLoader {
         throw new AssertionError("Constructor is not allowed");
     }
 
-    public static Map<String, Theme> loadThemes() {
+    public static Map<String, Theme> loadThemes(String file) {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
         try {
-            ThemeList themeList = mapper.readValue(new File("src/main/resources/application.yaml"), ThemeList.class);
+            ThemeList themeList = mapper.readValue(new File(file), ThemeList.class);
             return themeList.getThemesAsMap();
         } catch (IOException e) {
             return Collections.emptyMap();
         }
+    }
+
+    public static Map<String, Theme> loadThemes() {
+        return loadThemes("src/main/resources/application.yaml");
     }
 }
